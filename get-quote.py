@@ -8,8 +8,17 @@ def primary():
 
   last = 18
   rnd = random.randint(0, last)
-  rnd2 = random.randint(0, last +1)
-  print(quotes[rnd]+quotes[rnd2])
-
+  rnd2 = random.randint(0, last)
+  quotesrndlines = (quotes[rnd].replace('\n', '')+ ". " +quotes[rnd2].replace('\n', ''))
+  print(quotesrndlines)
+  
+  current_file = 'quotes.txt'
+  new_file = 'my_new_quotes.txt'
+  with open(current_file, 'r') as reader, open(new_file, 'w') as writer:
+   quotes = reader.readlines()
+   for frase in quotes:
+    if not frase.strip() == "Anything added dilutes everything else".strip():
+     writer.write(frase)
+	
 if __name__== "__main__":
   primary()
